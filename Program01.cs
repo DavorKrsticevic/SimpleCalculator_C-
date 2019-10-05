@@ -10,20 +10,28 @@ namespace SimpleCalculator
     {
         static void Main(string[] args)
         {
-            //take user input and convert it from string to numerical
-            InputConverter inputConverter = new InputConverter();
-            //some type of calculator engine that will do the calc
-            CalculatorEngine calculatorEngine = new CalculatorEngine();
+            try
+            {
+                //take user input and convert it from string to numerical
+                InputConverter inputConverter = new InputConverter();
+                //some type of calculator engine that will do the calc
+                CalculatorEngine calculatorEngine = new CalculatorEngine();
 
-            //get two input numbers
-            double firstNumber = inputConverter.ConvertInputToNumeric(Console.ReadLine());
-            double secondNumber = inputConverter.ConvertInputToNumeric(Console.ReadLine());
-            string operation = Console.ReadLine();
+                //get two input numbers
+                double firstNumber = inputConverter.ConvertInputToNumeric(Console.ReadLine());
+                double secondNumber = inputConverter.ConvertInputToNumeric(Console.ReadLine());
+                string operation = Console.ReadLine();
 
-            //get the result
-            double result = calculatorEngine.Calculate(operation, firstNumber, secondNumber);
+                //get the result
+                double result = calculatorEngine.Calculate(operation, firstNumber, secondNumber);
 
-            Console.WriteLine(result);
+                Console.WriteLine(result);
+            }
+            catch (Exception ex)
+            {
+                //in real world we would want to log this exception
+                Console.WriteLine(ex.Message);
+            }
 
 
         }   
